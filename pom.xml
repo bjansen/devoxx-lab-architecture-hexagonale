@@ -12,7 +12,9 @@
 
 	<modules>
 		<module>courtage-domain</module>
+<!--
 		<module>courtage-application-springboot</module>
+-->
         <module>courtage-application-quarkus</module>
     </modules>
 
