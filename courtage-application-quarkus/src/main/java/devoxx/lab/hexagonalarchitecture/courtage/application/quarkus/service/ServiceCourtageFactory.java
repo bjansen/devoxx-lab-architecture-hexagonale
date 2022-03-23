@@ -17,9 +17,9 @@ import javax.inject.Inject;
 public class ServiceCourtageFactory {
 
 	@Inject
-	private PortefeuilleRepositoryJpaImpl portefeuilleRepository;
+	PortefeuilleRepositoryJpaImpl portefeuilleRepository;
 	@Inject
-	private ServiceBourseHttpAdapter serviceBourse;
+	ServiceBourseHttpAdapter serviceBourse;
 	private Courtage impl = null;
 
 	public ServiceCourtageFactory() {
