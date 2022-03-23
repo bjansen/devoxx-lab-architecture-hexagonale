@@ -1,4 +1,4 @@
-package devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.adapters;
+package devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.adapters.rest;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 

@@ -1,6 +1,6 @@
 package devoxx.lab.hexagonalarchitecture.courtage.application.quarkus;
 
-import devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.adapters.BourseClientApi;
+import devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.adapters.rest.BourseClientApi;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.inject.Inject;

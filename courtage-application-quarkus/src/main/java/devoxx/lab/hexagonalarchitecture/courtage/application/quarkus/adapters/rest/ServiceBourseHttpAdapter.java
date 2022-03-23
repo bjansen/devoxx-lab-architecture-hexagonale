@@ -1,4 +1,4 @@
-package devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.adapters;
+package devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.adapters.rest;
 
 import devoxx.lab.hexagonalarchitecture.courtage.domain.port.secondaire.ServiceBourse;
 import org.eclipse.microprofile.rest.client.inject.RestClient;

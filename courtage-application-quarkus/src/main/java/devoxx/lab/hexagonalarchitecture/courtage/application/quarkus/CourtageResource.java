@@ -1,5 +1,6 @@
 package devoxx.lab.hexagonalarchitecture.courtage.application.quarkus;
 
+import devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.service.ServiceCourtageFactory;
 import devoxx.lab.hexagonalarchitecture.courtage.domain.exception.PortefeuilleDejaExistantException;
 import devoxx.lab.hexagonalarchitecture.courtage.domain.exception.PortefeuilleNonGereException;
 import devoxx.lab.hexagonalarchitecture.courtage.domain.port.primaire.ServiceCourtage;
@@ -20,8 +21,8 @@ public class CourtageResource {
 	private final ServiceCourtage serviceCourtage;
 
 	@Inject
-	public CourtageResource(ServiceCourtage serviceCourtage) {
-		this.serviceCourtage = serviceCourtage;
+	public CourtageResource(ServiceCourtageFactory serviceCourtageFactory) {
+		this.serviceCourtage = serviceCourtageFactory.get();
 	}
 
 	@POST
