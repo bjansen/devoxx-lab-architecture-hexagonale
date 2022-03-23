@@ -1,6 +1,6 @@
 package devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.service;
 
-import devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.adapters.persistence.PortefeuilleRepositorySpringDataImpl;
+import devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.adapters.persistence.PortefeuilleRepositoryJpaImpl;
 import devoxx.lab.hexagonalarchitecture.courtage.application.quarkus.adapters.rest.ServiceBourseHttpAdapter;
 import devoxx.lab.hexagonalarchitecture.courtage.domain.port.primaire.Courtage;
 import devoxx.lab.hexagonalarchitecture.courtage.domain.port.primaire.ServiceCourtage;
@@ -17,14 +17,18 @@ import javax.inject.Inject;
 public class ServiceCourtageFactory {
 
 	@Inject
-	private PortefeuilleRepositorySpringDataImpl portefeuilleRepository;
+	private PortefeuilleRepositoryJpaImpl portefeuilleRepository;
 	@Inject
 	private ServiceBourseHttpAdapter serviceBourse;
+	private Courtage impl = null;
 
 	public ServiceCourtageFactory() {
 	}
 
 	public ServiceCourtage get() {
-		return new Courtage(portefeuilleRepository, serviceBourse);
+		if (impl == null) {
+			impl = new Courtage(portefeuilleRepository, serviceBourse);
+		}
+		return impl;
 	}
 }

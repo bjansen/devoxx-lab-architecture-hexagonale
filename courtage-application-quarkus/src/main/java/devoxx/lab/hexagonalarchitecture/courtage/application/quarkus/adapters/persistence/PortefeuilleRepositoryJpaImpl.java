@@ -6,14 +6,17 @@ import devoxx.lab.hexagonalarchitecture.courtage.domain.port.secondaire.Portefeu
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Query;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import static java.util.Optional.ofNullable;
+
 @ApplicationScoped
-public class PortefeuilleRepositorySpringDataImpl implements PortefeuilleRepository {
+public class PortefeuilleRepositoryJpaImpl implements PortefeuilleRepository {
 	private final EntityManager em;
 
-	public PortefeuilleRepositorySpringDataImpl(EntityManager em) {
+	public PortefeuilleRepositoryJpaImpl(EntityManager em) {
 		this.em = em;
 	}
 
@@ -29,21 +32,23 @@ public class PortefeuilleRepositorySpringDataImpl implements PortefeuilleReposit
 
 	@Override
 	public void sauvegarde(Portefeuille portefeuille) {
-		throw new UnsupportedOperationException();
+		em.persist(portefeuille);
 	}
 
 	@Override
 	public Optional<Portefeuille> recupere(String id) {
-		throw new UnsupportedOperationException();
+		return ofNullable(em.find(Portefeuille.class, id));
 	}
 
 	@Override
 	public Stream<Portefeuille> recupereTous() {
-		throw new UnsupportedOperationException();
+		Query query = em.createQuery("SELECT p FROM Portefeuille p");
+		return (Stream<Portefeuille>) query.getResultStream();
 	}
 
 	@Override
 	public void purge() {
-		throw new UnsupportedOperationException();
+		Query query = em.createQuery("DELETE FROM Portefeuille p");
+		query.executeUpdate();
 	}
 }
